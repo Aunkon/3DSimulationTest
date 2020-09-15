@@ -6,10 +6,10 @@ public enum TestMode
     Game
 }
 
-public class GraphEdge : MonoBehaviour
+public class Edge : MonoBehaviour
 {
-    public GraphNode StartNode;
-    public GraphNode EndNode;
+    public Node StartNode;
+    public Node EndNode;
     public TestMode testMode = TestMode.Scene;
 
     bool Scaled = false;

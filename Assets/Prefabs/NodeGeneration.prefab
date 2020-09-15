@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a530bb8b7dbdbe442a37398acf23ae80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Node: {fileID: 284536364983396282, guid: b1a1f75e68f473f4285bcc749495572c, type: 3}
+  Node: {fileID: 4638398880949786569, guid: b1a1f75e68f473f4285bcc749495572c, type: 3}
   Edge: {fileID: 396523177094438710, guid: fe618e7c6b458784989087f7b9a9673a, type: 3}
+  rootNote: {fileID: 0}
 --- !u!114 &813979268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,3 +66,4 @@ MonoBehaviour:
   responseJsonObj:
     boxes: 0
   responseString: 
+  resultText: {fileID: 0}

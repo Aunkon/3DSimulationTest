@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 396523177094438712}
   - component: {fileID: 396523177094438713}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,6 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -105,6 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4687ce4e8c056fd45ad705fad029c070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GN1: {fileID: 0}
-  GN2: {fileID: 0}
+  StartNode: {fileID: 0}
+  EndNode: {fileID: 0}
   testMode: 0

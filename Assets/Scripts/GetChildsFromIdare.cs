@@ -22,6 +22,8 @@ public class GetChildsFromIdare : MonoBehaviour
     public ResponseJsonClass responseJsonObj;
     public string responseString;
     public Text resultText;
+    public NodeGeneration nodeGeneration;
+
 
     #region Unity Default Methods
     private void Awake()
@@ -55,7 +57,8 @@ public class GetChildsFromIdare : MonoBehaviour
             {
                 _errorPopUp.SetActive(true);
                 string error = uwr.error;
-
+                
+                //trying to understand which error occurced.
                 if (error.Contains("400"))
                 {
                     error = string.Format("Server cannot proccess your request!");
@@ -100,6 +103,7 @@ public class GetChildsFromIdare : MonoBehaviour
                     {
                         responseJsonObj = JsonUtility.FromJson<ResponseJsonClass>(responseString);
                         resultText.text = responseString;
+                        nodeGeneration.GenerateNodes(responseJsonObj.boxes);
                     }
                     else
                     {
