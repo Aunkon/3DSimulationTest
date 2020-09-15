@@ -44,8 +44,10 @@ public class NodeGeneration : MonoBehaviour
 
     public void AddNode(Vector3 newPosition)
     {
-        GameObject newNode = Instantiate(node, transform);        
+        GameObject newNode = Instantiate(node, transform);
         GameObject newEdge = Instantiate(edge, transform);
+
+        newNode.GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
 
         nodes.Add(newNode);
         edges.Add(newEdge);
