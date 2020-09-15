@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3716047968208187800}
   - component: {fileID: 3716047968208187801}
+  - component: {fileID: 813979268}
   m_Layer: 0
   m_Name: GraphManager
   m_TagString: Untagged
@@ -45,3 +46,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Node: {fileID: 284536364983396282, guid: b1a1f75e68f473f4285bcc749495572c, type: 3}
   Edge: {fileID: 396523177094438710, guid: fe618e7c6b458784989087f7b9a9673a, type: 3}
+--- !u!114 &813979268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716047968208187814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5068c63a1b71c8409b42c5cb1b445c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  apiEndpoint: https://us-central1-marine-set-274003.cloudfunctions.net/GetTotalBoxes
+  _loadingBar: {fileID: 0}
+  _errorPopUp: {fileID: 0}
+  _errorDetails: {fileID: 0}
+  responseJsonObj:
+    boxes: 0
+  responseString: 

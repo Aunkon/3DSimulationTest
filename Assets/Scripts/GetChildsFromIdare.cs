@@ -6,29 +6,48 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+
+[Serializable]
+public class ResponseJsonClass
+{
+    public int boxes;
+}
+
 public class GetChildsFromIdare : MonoBehaviour
 {
 
     public string apiEndpoint;
-
     public GameObject _loadingBar, _errorPopUp;
     public Text _errorDetails;
-
-    [Serializable]
-    public class ResponseJsonClass
-    {
-        public int boxes;
-    }
-
     public ResponseJsonClass responseJsonObj;
-
     public string responseString;
+    public Text resultText;
+
+    #region Unity Default Methods
+    private void Awake()
+    {
+        GetData();
+    }
+    #endregion Unity Default Methods
+
+    #region Public Methods
+    public void GetData()
+    {
+        try
+        {
+            StartCoroutine(GetFromAPI());
+        }
+        catch (Exception exception)
+        {
+            Debug.LogWarning(exception);
+        }
+    }
+    #endregion Public Methods
 
     #region Private Methods
     private IEnumerator GetFromAPI()
     {
-        apiEndpoint = string.Format("{0}?name={1}", apiEndpoint, "idare");
-        using (UnityWebRequest uwr = UnityWebRequest.Get(apiEndpoint))
+        using (UnityWebRequest uwr = UnityWebRequest.Get(string.Format("{0}?name={1}", apiEndpoint, "idare")))
         {
             _loadingBar.SetActive(true);
             yield return uwr.SendWebRequest();
@@ -80,6 +99,7 @@ public class GetChildsFromIdare : MonoBehaviour
                     if (!string.IsNullOrEmpty(responseString))
                     {
                         responseJsonObj = JsonUtility.FromJson<ResponseJsonClass>(responseString);
+                        resultText.text = responseString;
                     }
                     else
                     {
