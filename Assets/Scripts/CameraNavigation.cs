@@ -12,8 +12,8 @@ public class CameraNavigation : MonoBehaviour
 	public float cameraSpeed = 7; //regular camera speed
 	public float shiftAddSpeed = 20; //multiplied by how long shift is held.  Basically running
 	public float maxShiftSpeed = 25; //Maximum speed when holdin gshift
-	public float camSensivity = 0.15f; //How sensitive it with mouse
-	public bool rotateOnlyIfMousedown = true;
+	public float cameraSensivity = 0.15f; //How sensitive it with mouse
+	public bool rotateIfMouseDown = true;
 	public bool movementStaysFlat = true;
 
 	private Vector3 lastMouse = new Vector3();
@@ -27,10 +27,10 @@ public class CameraNavigation : MonoBehaviour
 			lastMouse = Input.mousePosition;
 		}
 
-		if (!rotateOnlyIfMousedown || (rotateOnlyIfMousedown && Input.GetMouseButton(1)))
+		if (!rotateIfMouseDown || (rotateIfMouseDown && Input.GetMouseButton(1)))
 		{
 			lastMouse = Input.mousePosition - lastMouse;
-			lastMouse = new Vector3(-lastMouse.y * camSensivity, lastMouse.x * camSensivity, 0);
+			lastMouse = new Vector3(-lastMouse.y * cameraSensivity, lastMouse.x * cameraSensivity, 0);
 			lastMouse = new Vector3(transform.eulerAngles.x + lastMouse.x, transform.eulerAngles.y + lastMouse.y, 0);
 			transform.eulerAngles = lastMouse;
 			lastMouse = Input.mousePosition;
@@ -38,58 +38,58 @@ public class CameraNavigation : MonoBehaviour
 		}
 
 		//Keyboard commands
-		float f = 0.0f;
-		Vector3 p = GetBaseInput();
+		Vector3 moveToPosition = GetBaseInput();
 		if (Input.GetKey(KeyCode.LeftShift))
 		{
 			totalRun += Time.deltaTime;
-			p = p * totalRun * shiftAddSpeed;
-			p.x = Mathf.Clamp(p.x, -maxShiftSpeed, maxShiftSpeed);
-			p.y = Mathf.Clamp(p.y, -maxShiftSpeed, maxShiftSpeed);
-			p.z = Mathf.Clamp(p.z, -maxShiftSpeed, maxShiftSpeed);
+			moveToPosition = moveToPosition * totalRun * shiftAddSpeed;
+			moveToPosition.x = Mathf.Clamp(moveToPosition.x, -maxShiftSpeed, maxShiftSpeed);
+			moveToPosition.y = Mathf.Clamp(moveToPosition.y, -maxShiftSpeed, maxShiftSpeed);
+			moveToPosition.z = Mathf.Clamp(moveToPosition.z, -maxShiftSpeed, maxShiftSpeed);
 		}
 		else
 		{
 			totalRun = Mathf.Clamp(totalRun * 0.5f, 1f, 1000f);
-			p = p * cameraSpeed;
+			moveToPosition = moveToPosition * cameraSpeed;
 		}
 
-		p = p * Time.deltaTime;
+		moveToPosition = moveToPosition * Time.deltaTime;
 		Vector3 newPosition = transform.position;
-		if (Input.GetKey(KeyCode.Space)
-			|| (movementStaysFlat && !(rotateOnlyIfMousedown && Input.GetMouseButton(1))))
-		{ //If player wants to move on X and Z axis only
-			transform.Translate(p);
+		if (Input.GetKey(KeyCode.Space) || (movementStaysFlat && !(rotateIfMouseDown && Input.GetMouseButton(1))))
+		{
+			//If player wants to move on X and Z axis only
+			transform.Translate(moveToPosition);
 			newPosition.x = transform.position.x;
 			newPosition.z = transform.position.z;
 			transform.position = newPosition;
 		}
 		else
 		{
-			transform.Translate(p);
+			transform.Translate(moveToPosition);
 		}
-
 	}
 
 	private Vector3 GetBaseInput()
-	{ //returns the basic values, if it's 0 than it's not active.
-		Vector3 p_Velocity = new Vector3();
+	{
+		//returns the basic values, if it's 0 than it's not active.
+		Vector3 positionVelocity = new Vector3();
+
 		if (Input.GetKey(KeyCode.W))
 		{
-			p_Velocity += new Vector3(0, 0, 1);
+			positionVelocity += new Vector3(0, 0, 1);
 		}
 		if (Input.GetKey(KeyCode.S))
 		{
-			p_Velocity += new Vector3(0, 0, -1);
+			positionVelocity += new Vector3(0, 0, -1);
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
-			p_Velocity += new Vector3(-1, 0, 0);
+			positionVelocity += new Vector3(-1, 0, 0);
 		}
 		if (Input.GetKey(KeyCode.D))
 		{
-			p_Velocity += new Vector3(1, 0, 0);
+			positionVelocity += new Vector3(1, 0, 0);
 		}
-		return p_Velocity;
+		return positionVelocity;
 	}
 }
