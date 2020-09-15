@@ -15,4 +15,4 @@ This Application can place a certain number of boxes (Get Amount from API) in wo
 1. Endpoint https://us-central1-marine-set-274003.cloudfunctions.net/GetTotalBoxes
 2. For a GET method add a query param with key “name” and value “IDARE” or “idare”
 3. Receive number of boxes in json format like { “boxes”: 7 }
-https://photos.app.goo.gl/bAmLKqvi74LEEyH6A
+![](https://lh3.googleusercontent.com/pw/ACtC-3f3zDM43cV2-3H6KoM04HomI3AN1c65cZ4hZYW3a99TLAc78pRoiDrDjuDJ-gHoJFtB7BRU5FbLB4la3EsxEdsKfkoEVpnJ8F8wg5DHJahpEg8QIdeZ6W0j79TR9VUwUSQFMcxjElTYTTObL3BWHEiwHg=w1072-h839-no)
