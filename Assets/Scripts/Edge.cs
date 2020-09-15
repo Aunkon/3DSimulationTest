@@ -1,51 +1,27 @@
 ﻿using UnityEngine;
 
-public enum TestMode
-{
-    Scene,
-    Game
-}
-
 public class Edge : MonoBehaviour
 {
     public Node StartNode;
     public Node EndNode;
-    public TestMode testMode = TestMode.Scene;
-
-    bool Scaled = false;
-
-    void FixedUpdate()
-    {
-        if (StartNode.transform.hasChanged || EndNode.transform.hasChanged)
-        {
-            Scale();
-        }
-    }
 
     void Update()
     {
-        if (!Scaled)
-            return;
-
-        if (testMode == TestMode.Scene)
+        if (StartNode.transform.hasChanged || EndNode.transform.hasChanged)
         {
-            StartNode.transform.hasChanged = false;
-            EndNode.transform.hasChanged = false;
+            Resize();
         }
-        Scaled = false;
     }
 
-    void Scale()
+    void Resize()
     {
-        float distance = Vector3.Distance(StartNode.transform.position, EndNode.transform.position); //Change Scale
+        float distance = Vector3.Distance(StartNode.transform.position, EndNode.transform.position);
         transform.localScale = new Vector3(0.25f, 0.25f, distance);
 
-        Vector3 middlePoint = (StartNode.transform.position + EndNode.transform.position) / 2; //Change Position
+        Vector3 middlePoint = (StartNode.transform.position + EndNode.transform.position) / 2;
         transform.position = middlePoint;
 
-        Vector3 rotationDirection = (EndNode.transform.position - StartNode.transform.position); //Change Rotation
+        Vector3 rotationDirection = (EndNode.transform.position - StartNode.transform.position);
         transform.rotation = Quaternion.LookRotation(rotationDirection);
-
-        Scaled = true;
     }
 }
