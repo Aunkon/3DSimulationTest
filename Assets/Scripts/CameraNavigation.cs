@@ -18,13 +18,23 @@ public class CameraNavigation : MonoBehaviour
 
 	private Vector3 lastMouse = new Vector3();
 	private float totalRun = 1.0f;
-
-	void Update()
+	private void Awake()
 	{
+		Screen.fullScreen = true;
+	}
 
+	private void Update()
+	{
 		if (Input.GetMouseButtonDown(1))
 		{
 			lastMouse = Input.mousePosition;
+			//Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		}
+		else
+		{
+			//Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 		}
 
 		if (!rotateIfMouseDown || (rotateIfMouseDown && Input.GetMouseButton(1)))
