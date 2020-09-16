@@ -44,7 +44,7 @@ public class NodeGeneration : MonoBehaviour
         for (int i = 0; i < nodesLength; i++)
         {
             float angle = i * Mathf.PI * 2f / nodesLength;
-            Vector3 newPosition = new Vector3(Mathf.Cos(angle) * radius, 0.25f, Mathf.Sin(angle) * radius);
+            Vector3 newPosition = new Vector3(Mathf.Cos(angle) * radius, 0.35f, Mathf.Sin(angle) * radius);
             AddNode(newPosition);
         }
     }
