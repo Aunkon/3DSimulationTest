@@ -31,7 +31,8 @@ This Application can place a certain number of boxes (Get Amount from API) in wo
 2. API Data processing - own experience.
 3. Spawn Object with Circular position around the Root - Mathematics.
 4. Dragging Object - https://answers.unity.com/questions/1141458/drag-and-drop-along-x-and-z-axis.html
-5. Connect with Edge and Resize Edge - my Vector 3 knowledge from physics and Mathematics
+5. Dragging for Connection - Solve by Vector mathemactical calculation and online resources.
+6. Connect with Edge and Resize Edge - my Vector 3 knowledge from physics and Mathematics
 
 # Completed Task
 1. Git version control of the project and host on Github. (make it open source)
