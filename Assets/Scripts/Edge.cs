@@ -2,12 +2,12 @@
 
 public class Edge : MonoBehaviour
 {
-    public Node StartNode;
-    public Node EndNode;
+    public Node startNode;
+    public Node endNode;
 
     void Update()
     {
-        if (StartNode.transform.hasChanged || EndNode.transform.hasChanged)
+        if (startNode.transform.hasChanged || endNode.transform.hasChanged)
         {
             Resize();
         }
@@ -15,13 +15,13 @@ public class Edge : MonoBehaviour
 
     void Resize()
     {
-        float distance = Vector3.Distance(StartNode.transform.position, EndNode.transform.position);
+        float distance = Vector3.Distance(startNode.transform.position, endNode.transform.position);
         transform.localScale = new Vector3(0.25f, 0.25f, distance);
 
-        Vector3 middlePoint = (StartNode.transform.position + EndNode.transform.position) / 2;
+        Vector3 middlePoint = (startNode.transform.position + endNode.transform.position) / 2;
         transform.position = middlePoint;
 
-        Vector3 rotationDirection = (EndNode.transform.position - StartNode.transform.position);
+        Vector3 rotationDirection = (endNode.transform.position - startNode.transform.position);
         transform.rotation = Quaternion.LookRotation(rotationDirection);
     }
 }

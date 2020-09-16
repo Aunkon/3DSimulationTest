@@ -51,14 +51,19 @@ public class GetChildsFromIdare : MonoBehaviour
     {
         using (UnityWebRequest uwr = UnityWebRequest.Get(string.Format("{0}?name={1}", apiEndpoint, "idare")))
         {
+            // Set header to avoid CORS policy
             uwr.SetRequestHeader("Access-Control-Allow-Headers","*");
             uwr.SetRequestHeader("Access-Control-Allow-Origin", "*");
             uwr.SetRequestHeader("Access-Control-Allow-Methods", "*");
             uwr.SetRequestHeader("Access-Control-Allow-Credentials", "true");
             uwr.SetRequestHeader("Accept", "*");
             uwr.SetRequestHeader("Content-Type", "*");
+            // Set header to avoid CORS policy
+
             _loadingBar.SetActive(true);
             yield return uwr.SendWebRequest();
+
+            //Separate all Error
             if (uwr.isNetworkError || uwr.isHttpError)
             {
                 _errorPopUp.SetActive(true);
@@ -100,6 +105,8 @@ public class GetChildsFromIdare : MonoBehaviour
                 _errorDetails.text = error;
                 resultText.text = uwr.error;
             }
+
+            //If Webrequest Successful then try to convert Json Data to Json Object
             else if (uwr.isDone)
             {
                 try

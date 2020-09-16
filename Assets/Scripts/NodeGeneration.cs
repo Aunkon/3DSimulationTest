@@ -18,7 +18,14 @@ public class NodeGeneration : MonoBehaviour
         edges = new List<GameObject>();
     }
 
+    //Destroy Previous Nodes and Generate New nodes from API data
     public void GenerateNodes(int nodesLength)
+    {
+        DestroyNodesNEdges();
+        GenerateCircle(nodesLength);
+    }
+
+    private void DestroyNodesNEdges()
     {
         for (int i = 0; i < nodes.Count; i++)
         {
@@ -28,9 +35,9 @@ public class NodeGeneration : MonoBehaviour
         {
             Destroy(edges[i]);
         }
-        GenerateCircle(nodesLength);
     }
 
+    //Calculated a circle vector 3 position arround vector3.zero
     private void GenerateCircle(int nodesLength)
     {
         float radius = 4.5f;
@@ -42,19 +49,24 @@ public class NodeGeneration : MonoBehaviour
         }
     }
 
-    public void AddNode(Vector3 newPosition)
+    //Spawn Node and Edges
+    private void AddNode(Vector3 newPosition)
     {
-        GameObject newNode = Instantiate(node, transform);
-        GameObject newEdge = Instantiate(edge, transform);
+        GameObject newNode = Instantiate(node, transform); //Node Spawn
+        GameObject newEdge = Instantiate(edge, transform); //Edge Spawn
 
+        //Material Color Randomization
         newNode.GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
 
+        //Add node to a list for future destroy
         nodes.Add(newNode);
         edges.Add(newEdge);
 
-        newNode.transform.position = newPosition; // Move node position to scaled Edges by Edge.cs
+        // Move node position to scaled Edges by Edge.cs
+        newNode.transform.position = newPosition;
 
-        newEdge.GetComponent<Edge>().StartNode = rootNote;
-        newEdge.GetComponent<Edge>().EndNode = newNode.GetComponent<Node>();
+        //Connect new node with root node
+        newEdge.GetComponent<Edge>().startNode = rootNote;
+        newEdge.GetComponent<Edge>().endNode = newNode.GetComponent<Node>();
     }
 }
