@@ -18,8 +18,12 @@ This Application can place a certain number of boxes (Get Amount from API) in wo
 # Integration.
 1. First I create a GitHub Repository.
 2. Then start to collect every resource I find online for this project.
-3. Try to Design a solution to solve this in my mind.
+3. Try to Design a solution to solve this in my mind. (Modified)
 ![](https://lh3.googleusercontent.com/pw/ACtC-3cOZyKMAQxj2TJOeW78KcEK-bhW4m25vW-gVJ92Bcf1QB8_6rL0ziNlynATbEDwqK0yffgcLfpNnVg6nZX_CDoAdJYoY7EzydMuVsbk9h3D-5uqbiTIf1OaLLxkMqMlK3UxTnxSgDkHTJ0HnSghmOpGpw=w1263-h947-no?authuser=0)
+
+# Modified Design.
+![](https://lh3.googleusercontent.com/pw/ACtC-3czdovYx_vGEYMIc58HYGaYThrCFg_W24dT4vPNdpa7C1RsRV0GI_6p0BzCWRX1bYUaQ_s5c-iopBnGYT1yyoAxloSrc0LE9AlPZ08UE3wsOdT7KIds-PaRtLtz817nTLe-5T-E62xkdER12lf98BAz_g=w1263-h947-no?authuser=0)
+
 4. Follow this step to complete the project.
 
 # Resources
