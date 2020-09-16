@@ -83,6 +83,7 @@ public class NodeGeneration : MonoBehaviour
             {
                 nodes[i].GetComponent<NodeDrag>().canDrag = false;
                 nodes[i].GetComponent<ConnectorGenerator>().canConnect = true;
+                ConnectorGenerator.canSpawnConnector = true;
             }
         }
         else
@@ -91,6 +92,7 @@ public class NodeGeneration : MonoBehaviour
             {
                 nodes[i].GetComponent<NodeDrag>().canDrag = true;
                 nodes[i].GetComponent<ConnectorGenerator>().canConnect = false;
+                ConnectorGenerator.canSpawnConnector = false;
             }
         }
     }
