@@ -51,6 +51,12 @@ public class GetChildsFromIdare : MonoBehaviour
     {
         using (UnityWebRequest uwr = UnityWebRequest.Get(string.Format("{0}?name={1}", apiEndpoint, "idare")))
         {
+            uwr.SetRequestHeader("Access-Control-Allow-Headers","*");
+            uwr.SetRequestHeader("Access-Control-Allow-Origin", "*");
+            uwr.SetRequestHeader("Access-Control-Allow-Methods", "*");
+            uwr.SetRequestHeader("Access-Control-Allow-Credentials", "true");
+            uwr.SetRequestHeader("Accept", "*");
+            uwr.SetRequestHeader("Content-Type", "*");
             _loadingBar.SetActive(true);
             yield return uwr.SendWebRequest();
             if (uwr.isNetworkError || uwr.isHttpError)
@@ -92,6 +98,7 @@ public class GetChildsFromIdare : MonoBehaviour
                     error = uwr.error;
                 }
                 _errorDetails.text = error;
+                resultText.text = uwr.error;
             }
             else if (uwr.isDone)
             {

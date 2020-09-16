@@ -1303,7 +1303,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "{\r\n    \"boxes\": 7\n}"
+  m_Text: 'blocked by CORS policy: No ''Access-Control-Allow-Origin'' header is present
+    on the requested resource. If an opaque response serves your needs, set the request''s
+    mode to ''no-cors'' to fetch the resource with CORS disabled.'
 --- !u!222 &2066483200
 CanvasRenderer:
   m_ObjectHideFlags: 0
