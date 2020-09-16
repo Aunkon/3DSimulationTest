@@ -2,11 +2,21 @@
 
 public class Edge : MonoBehaviour
 {
-    public Node startNode;
-    public Node endNode;
+    public GameObject startNode;
+    public GameObject endNode;
 
+    public bool isActive = false;
+
+    private Vector3 startPos;
+    private Vector3 distance;    
+    
     void Update()
     {
+        if (!isActive)
+        {
+            return;
+        }
+
         if (startNode.transform.hasChanged || endNode.transform.hasChanged)
         {
             Resize();

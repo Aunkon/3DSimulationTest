@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Node : MonoBehaviour
+public class NodeDrag : MonoBehaviour
 {
     //void OnMouseDrag()
     //{
@@ -19,8 +19,15 @@ public class Node : MonoBehaviour
     float posX;
     float posZ;
     float posY;
+
+    public bool canDrag = true;
+
     void OnMouseDown()
     {
+        if (!canDrag)
+        {
+            return;
+        }
         startPos = transform.position;
         dist = Camera.main.WorldToScreenPoint(transform.position);
         posX = Input.mousePosition.x - dist.x;
@@ -30,6 +37,10 @@ public class Node : MonoBehaviour
 
     void OnMouseDrag()
     {
+        if (!canDrag)
+        {
+            return;
+        }
         float disX = Input.mousePosition.x - posX;
         float disY = Input.mousePosition.y - posY;
         float disZ = Input.mousePosition.z - posZ;
