@@ -5,10 +5,10 @@ public class Edge : MonoBehaviour
     public GameObject startNode;
     public GameObject endNode;
 
-    public bool isActive = false;
+    public string edgeName;
 
-    private Vector3 startPos;
-    private Vector3 distance;    
+    public bool isActive = false;
+    
     
     void Update()
     {

@@ -20,7 +20,9 @@ public class ConnectorGenerator : MonoBehaviour
         }
         
         GameObject newEdge = Instantiate(edge, transform.parent); //Edge Spawn
-        Edge tempEdge = newEdge.GetComponent<Edge>();
+        newEdge.name = NodeGeneration.edgeIndex.ToString();
+        NodeGeneration.edgeIndex++;
+        Edge tempEdge = newEdge.GetComponent<Edge>();        
         tempEdge.startNode = this.gameObject;
         tempEdge.isActive = false;
         JointConnection tempConnection = newEdge.GetComponent<JointConnection>();

@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class JointConnection : MonoBehaviour
@@ -33,15 +35,47 @@ public class JointConnection : MonoBehaviour
             Debug.Log(endPosition);
             if (hit.transform.tag == "Node" && hit.transform.gameObject != startNode)
             {
-                GetComponent<Edge>().endNode = hit.transform.gameObject;
-                disbleCreation = true;
-                GetComponent<Edge>().enabled = true;
+                Edge currentEdge = GetComponent<Edge>();
+                currentEdge.endNode = hit.transform.gameObject;
+                currentEdge.enabled = true;
+                currentEdge.isActive = true;
+                currentEdge.edgeName =
+                    string.Format(
+                        "{0}N{1}",
+                        startNode.name,
+                        hit.transform.name
+                        );
                 ConnectorGenerator.canSpawnConnector = true;
-                GetComponent<Edge>().isActive = true;
+                CheckEdgeExistOrNot(currentEdge);
+                disbleCreation = true;
                 isActive = false;
             }
             Resize();
         }
+    }
+
+    private void CheckEdgeExistOrNot(Edge currentEdge)
+    {
+        int length = NodeGeneration.edges.Count;
+        for (int i = 0; i < length; i++)
+        {
+            if(string.Equals(NodeGeneration.edges[i].edgeName, currentEdge.edgeName)
+                || string.Equals(NodeGeneration.edges[i].edgeName, ReverseString(currentEdge.edgeName))
+                )
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
+        NodeGeneration.edges.Add(currentEdge);
+    }
+
+    private string ReverseString(string edgeName)
+    {
+        char[] charArray = edgeName.ToCharArray();
+        Array.Reverse(charArray);
+        edgeName = new string(charArray);
+        return edgeName;
     }
 
     private void Resize()
@@ -55,21 +89,4 @@ public class JointConnection : MonoBehaviour
         Vector3 rotationDirection = (endPosition - startNode.transform.position);
         transform.rotation = Quaternion.LookRotation(rotationDirection);
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (!isActive)
-    //    {
-    //        return;
-    //    }
-
-    //    if (collision.gameObject.tag == "Node" && collision.gameObject != startNode)
-    //    {
-    //        GetComponent<Edge>().endNode = collision.gameObject;
-    //        disbleCreation = true;
-    //        GetComponent<Edge>().enabled = true;
-    //        ConnectorGenerator.canSpawnConnector = true;
-    //        isActive = false;
-    //    }
-    //}
 }

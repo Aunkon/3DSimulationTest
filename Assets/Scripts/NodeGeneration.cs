@@ -7,10 +7,15 @@ public class NodeGeneration : MonoBehaviour
     public GameObject node;
 
     public static List<GameObject> nodes;
+    public static List<Edge> edges;
+
+    public static int nodeIndex = 0;
+    public static int edgeIndex = 0;
 
     void Start()
     {
         nodes = new List<GameObject>();
+        edges = new List<Edge>();
     }
 
     //Destroy Previous Nodes and Generate New nodes from API data
@@ -23,22 +28,16 @@ public class NodeGeneration : MonoBehaviour
 
     private void DestroyNodesNEdges()
     {
-        for (int i = 0; i < nodes.Count; i++)
+        foreach (Transform item in transform)
         {
-            Destroy(nodes[i]);
+            if (item.parent == transform)
+            {
+                Destroy(item.gameObject);
+            }
         }
-    }
-
-    //Calculated a circle vector 3 position arround vector3.zero
-    private void GenerateCircle(int nodesLength)
-    {
-        float radius = 4.5f;
-        for (int i = 0; i < nodesLength; i++)
-        {
-            float angle = i * Mathf.PI * 2f / nodesLength;
-            Vector3 newPosition = new Vector3(Mathf.Cos(angle) * radius, 0.35f, Mathf.Sin(angle) * radius);
-            AddNode(newPosition);
-        }
+        edgeIndex = nodeIndex = 0;
+        nodes.Clear();
+        edges.Clear();
     }
 
     private void GenerateBox(int nodesLength)
@@ -57,6 +56,8 @@ public class NodeGeneration : MonoBehaviour
     private void AddNode(Vector3 newPosition)
     {
         GameObject newNode = Instantiate(node, transform); //Node Spawn
+        newNode.name = nodeIndex.ToString();
+        nodeIndex++;
         //GameObject newEdge = Instantiate(edge, transform); //Edge Spawn
 
         //Material Color Randomization
