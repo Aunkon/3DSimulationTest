@@ -1,5 +1,5 @@
 # 3DSimulationTest
-Play this Game and Playing Documentation from this link - https://github.com/Aunkon/3DSimulationWebGL
+Play this Game and find how to play guideline from this link - https://github.com/Aunkon/3DSimulationWebGL
 
 # Problem definition
 This Application can place a certain number of boxes (Get Amount from API) in world space in front of the camera and connect them with connectors.
@@ -10,8 +10,8 @@ This Application can place a certain number of boxes (Get Amount from API) in wo
 2. For a GET method add a query param with key “name” and value “IDARE” or “idare”
 3. Receive number of boxes in json format like { “boxes”: 7 }
 
-# Research and Development.
-1. This is the first time I use GitHub. Basically I use Tortoise svn for version control.
+# Research and Development(Summary) .
+1. This is the first time I use GitHub. Rather than, I use Tortoise SVN for version control.
 2. Find Boxes Dragging and re-scaling using drag on online. But finally, figure it out by myself.
 3. Other small parts of this project's I was experienced with my professional life.
 
@@ -24,9 +24,10 @@ This Application can place a certain number of boxes (Get Amount from API) in wo
 
 # Resources
 1. Camera Navigation - https://gist.github.com/McFunkypants/5a9dad582461cb8d9de3
-2. API Data processing, Spawn Object with Circular position around the Root - Mathematics.
-3. Dragging Object - https://answers.unity.com/questions/1141458/drag-and-drop-along-x-and-z-axis.html
-4. Connect with Edge and Resize Edge - my Vector 3 knowledge from physics and Mathematics
+2. API Data processing - own experience.
+3. Spawn Object with Circular position around the Root - Mathematics.
+4. Dragging Object - https://answers.unity.com/questions/1141458/drag-and-drop-along-x-and-z-axis.html
+5. Connect with Edge and Resize Edge - my Vector 3 knowledge from physics and Mathematics
 
 # Completed Task
 1. Git version control of the project and host on Github. (make it open source)
@@ -37,4 +38,4 @@ This Application can place a certain number of boxes (Get Amount from API) in wo
 6. Create draggable connectors to connect the boxes.
 7. Camera movement for roaming around the scene to observe them. (Details Follow the Documentation)
 8. WebGL build of the project, upload on github.io. &
-9. Document of instructions to operate the final submitted. Follow the link - https://aunkon.github.io/3DSimulationWebGL/index.html
+9. Document of instructions to operate the final submitted. Follow the link - https://github.com/Aunkon/3DSimulationWebGL
