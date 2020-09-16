@@ -1,5 +1,5 @@
 # 3DSimulationTest
-Play this Game from this link - https://aunkon.github.io/3DSimulationWebGL/index.html
+Play this Game and Playing Documentation from this link - https://github.com/Aunkon/3DSimulationWebGL
 
 # Problem definition
 This Application can place a certain number of boxes (Get Amount from API) in world space in front of the camera and connect them with connectors.
